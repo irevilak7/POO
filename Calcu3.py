@@ -32,10 +32,15 @@ class Calc:
         self.window = tkinter.Tk()
         
         self.window.title("Calc Win")
-        self.window.geometry("570x310+100+200")
+        self.window.geometry("570x350+100+200")
         
-        self.txtLog = tkinter.Text(self.window, bg="lightgray", width=20, height=17)
+        self.sbLog = tkinter.Scrollbar(self.window)
+        self.sbLog.pack(side=tkinter.RIGHT, fill=tkinter.Y)
+        
+        self.txtLog = tkinter.Text(self.window, bg="lightgray", width=20, height=20,
+                                   wrap=tkinter.NONE, yscrollcommand=self.sbLog.set)
         self.txtLog.place(x=390, y=10)
+        self.sbLog.config(command=self.txtLog.yview)
         
         self.txt01 = tkinter.Entry(self.window, bg="lightgray", width=60, justify='right')
         self.txt01.place(x=10, y=10)
@@ -97,8 +102,20 @@ class Calc:
         self.btncos = tkinter.Button(self.window, text = "cos", command = self.btncos_click)
         self.btncos.place(x=10, y=260, width=75)
         
+        self.btncos = tkinter.Button(self.window, text = "sin", command = self.btnsin_click)
+        self.btncos.place(x=105, y=260, width=75)
+        
+        self.btncos = tkinter.Button(self.window, text = "tan", command = self.btntan_click)
+        self.btncos.place(x=200, y=260, width=75)
+        
         self.btncan = tkinter.Button(self.window, text = "C", command = self.btncan_click)
         self.btncan.place(x=295, y=260, width=75)
+        
+        self.btncos = tkinter.Button(self.window, text = "pow", command = self.btnpow_click)
+        self.btncos.place(x=10, y=300, width=75)
+        
+        self.btncan = tkinter.Button(self.window, text = "C Log", command = self.btnclg_click)
+        self.btncan.place(x=295, y=300, width=75)
         
         self._getLog()
         
@@ -214,9 +231,17 @@ class Calc:
                     lNum03 = lNum01 / lNum02
                 elif (self.__aOper == 'cos'):
                     lNum03 = math.cos(lNum01)
-                
-                if self.__aOper == 'cos':
+                elif (self.__aOper == 'sin'):
+                    lNum03 = math.sin(lNum01)
+                elif (self.__aOper == 'tan'):
+                    lNum03 = math.tan(lNum01)
+                elif (self.__aOper == 'pow'):
+                    lNum03 = math.pow(lNum01, lNum02)
+                    
+                if (self.__aOper == 'cos') or (self.__aOper == 'sin') or (self.__aOper == 'tan'):
                     lMssg = self.__aOper + '( ' + str(lNum01) + ' ) = ' + str(lNum03) + "\n"
+                elif (self.__aOper == 'pow'):
+                    lMssg = str(lNum01) + ' ^ ' + str(lNum02) + ' = ' + str(lNum03) + "\n"
                 else:   
                     lMssg = str(lNum01) + ' ' + self.__aOper + ' ' + str(lNum02) + ' = ' + str(lNum03) + "\n"
                 self.txtLog.insert(tkinter.END, lMssg)
@@ -238,6 +263,22 @@ class Calc:
         self.btnequ_click()
     #btncos_click
     
+    def btnsin_click(self):
+        self._oper('sin')
+        prSetTxt(self.txt02, " ")
+        self.btnequ_click()
+    #btnsin_click
+    
+    def btntan_click(self):
+        self._oper('tan')
+        prSetTxt(self.txt02, " ")
+        self.btnequ_click()
+    #btntan_click
+    
+    def btnpow_click(self):
+        self._oper('pow')
+    #btnpow_click
+    
     def btncan_click(self):
         self.txt01.delete(0, len(self.txt01.get()))
         self.txt02.delete(0, len(self.txt02.get()))
@@ -245,6 +286,17 @@ class Calc:
         self.__aNumIdx = 1
         self.__aOper = ''
     # btncan_click
+    
+    def btnclg_click(self):
+        self.txt01.delete(0, len(self.txt01.get()))
+        self.txt02.delete(0, len(self.txt02.get()))
+        self.txt03.delete(0, len(self.txt03.get()))
+        self.txtLog.delete('1.0', tkinter.END)
+        self.__aNumIdx = 1
+        self.__aOper = ''
+        lFile = open("log.txt", "wt")
+        lFile.close()
+    # btnclg_click
     
 # Calc
 
