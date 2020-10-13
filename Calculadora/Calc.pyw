@@ -94,6 +94,13 @@ class Calc:
         
         self.bttnejemplo=tkinter.Button(self.mainFrame,text="ejemplo",width=8)
         self.bttnejemplo.grid(row=7,column=0, padx=2, pady=2, columnspan=2)
+        
+        self.bttnejemplo2 = tkinter.Button(self.mainFrame, text="ejemplo 2", width=18)
+        self.bttnejemplo2.grid(row=8, column=0, padx=2, pady=2, columnspan=4)
+        
+        self.txtLog = tkinter.Text(self.mainFrame, bg="lightgray", width=20, height=17)
+        self.txtLog.grid(row=0, column=4, padx=2, pady=2, rowspan=9)
+        
         self.window.mainloop()
         
     # createWindow
