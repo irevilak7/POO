@@ -1,3 +1,4 @@
+
 class Vegetal: #Crea la clase
     def __init__(self, variedad):
         self.Variedad = variedad
