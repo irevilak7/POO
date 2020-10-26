@@ -21,8 +21,12 @@ class Calc:
         #==================Frame===================
         self.mainFrame=tkinter.Frame(self.window)
         self.mainFrame.pack()
+        
+        self.txtLog = tkinter.Text(self.mainFrame, bg="lightgray", width=20, height=17)
+        self.txtLog.grid(row=0,column=4, padx=10,pady=10,rowspan=8)
         #==================Entrada 1===================
-        self.entrada1=tkinter.Entry(self.mainFrame)
+        self.textEntrada1=tkinter.StringVar()
+        self.entrada1=tkinter.Entry(self.mainFrame, textvariable=self.textEntrada1)
         self.entrada1.grid(row=0,column=0, padx=10,pady=10,columnspan=4)
         self.entrada1.config(background="black",fg="#03f943", justify="right")
         
@@ -63,7 +67,7 @@ class Calc:
         self.bttnMult.grid(row=4,column=3, padx=2,pady=2)
         
         #==================Fila 3===================
-        self.bttn1=tkinter.Button(self.mainFrame,text="1",width=3)
+        self.bttn1=tkinter.Button(self.mainFrame,text="1",width=3, command= self.bttn1Press)
         self.bttn1.grid(row=5,column=0, padx=2,pady=2)
         
         self.bttn2=tkinter.Button(self.mainFrame,text="2",width=3)
@@ -95,6 +99,10 @@ class Calc:
         self.bttnejemplo=tkinter.Button(self.mainFrame,text="ejemplo",width=8)
         self.bttnejemplo.grid(row=7,column=0, padx=2, pady=2, columnspan=2)
         self.window.mainloop()
+        
+    #////////////////////Metodos de clase///////////////////////
+    def bttn1Press(self):
+        self.textEntrada1.set(self.textEntrada1.get()+'1')
         
     # createWindow
     
