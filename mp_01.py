@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -16,8 +15,13 @@ class PlotWin:
         
         Xs = np.linspace(-5, 5, 100)
         Y = [ 2 + 0.5 * X for X in Xs ]
+        Y2 = [ 2 - 0.5 * X for X in Xs ]
+        Y3 = [ 2 - 2 * X for X in Xs ]
         lAxis.plot(Xs, Y)
-        lPlane.show()
+        lAxis.plot(Xs, Y2)
+        lAxis.plot(Xs, Y3)
+        #lPlane.show()
+        lPlane.savefig('demo.png', bbox_inches='tight')
     # showPlot
     
 # PlotWin
@@ -25,13 +29,6 @@ class PlotWin:
 if __name__ == '__main__':
     myPlotWin = PlotWin()
     myPlotWin.showPlot()
-
-
-
-
-
-
-
 
 
 

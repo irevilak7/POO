@@ -1,0 +1,7 @@
+1. c) El diseño gráfico que se usa para construir modelos.
+2. a) Declarar la variable con un identificador válido.
+3. c) Para acceder a archivos en unidades de almacenamiento, para lectura y escritura.
+4. b) Agrega las funciones para codificación y decodificación para serializar objetos.
+5. b) Generar datos estadísticos en volumen.
+
+
