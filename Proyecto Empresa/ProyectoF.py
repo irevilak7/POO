@@ -20,10 +20,11 @@ class Calc:
         #==================Renglon 1===================
         #self.texto1=tkinter.StringVar()
         self.combobox1=ttk.Combobox(self.mainFrame)
+        self.combobox1.bind("<<ComboboxSelected>>", self.comboboxAction)
         self.combobox1.grid(row=0,column=0, padx=10,pady=10,columnspan=2)
         self.combobox1["values"] = ["Trimestral", "Semestral", "Anual"]
-        self.bttnGraficar = tkinter.Button(self.mainFrame,text="Graficar",width=10)
-        self.bttnGraficar.grid(row=0, column=3, padx=10,pady=10)
+        bttnGraficar = tkinter.Button(self.mainFrame,text="Graficar",width=10, command=self.ejemploBoton)
+        bttnGraficar.grid(row=0, column=3, padx=10,pady=10)
         #==================Renglon 2===================
         self.label1 = tkinter.Label(self.mainFrame,text="Primer mes")
         self.label1.grid(row=1, column=0, padx=10,pady=10)
@@ -103,7 +104,34 @@ class Calc:
         self.entrada12.grid(row=6,column=3, padx=10,pady=10)
         
         self.window.mainloop()
-    
+
+    def comboboxAction(self, event=None):
+        opcion=self.combobox1.get()
+        if (opcion=="Trimestral"):
+            self.label4.lower(self.mainFrame)
+            self.label5.lower(self.mainFrame)
+            self.label6.lower(self.mainFrame)
+            self.label7.lower(self.mainFrame)
+            self.label8.lower(self.mainFrame)
+            self.label9.lower(self.mainFrame)
+            self.label10.lower(self.mainFrame)
+            self.label11.lower(self.mainFrame)
+            self.label12.lower(self.mainFrame)
+        if (opcion=="Semestral"):
+            print(2)
+        if (opcion=="Anual"):
+            print(3)
+    def ejemploBoton(self, event=None):
+            self.label4.lower(self.mainFrame)
+            self.label5.lower(self.mainFrame)
+            self.label6.lower(self.mainFrame)
+            self.label7.lower(self.mainFrame)
+            self.label8.lower(self.mainFrame)
+            self.label9.lower(self.mainFrame)
+            self.label10.lower(self.mainFrame)
+            self.label11.lower(self.mainFrame)
+            self.label12.lower(self.mainFrame)
+        
 
     #Creamos la calculadora
 if __name__ == '__main__':
