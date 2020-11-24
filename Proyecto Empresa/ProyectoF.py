@@ -179,10 +179,31 @@ class Calc(tk.Tk):
         lAxis.spines['top'].set_color('none')
         lAxis.xaxis.set_ticks_position('bottom')
         lAxis.yaxis.set_ticks_position('left')
+        opcion=self.combobox1.get()
+        Xs= np.linspace(1, 3,3)
+       
         
-        Xs = np.linspace(-5, 5, 100)
-        Y = [ 2 + 0.5 * X for X in Xs ]
-        lAxis.plot(Xs, Y)
+        if (opcion=="Trimestral"):
+            Xs= np.linspace(1, 3,3)
+            Y=[1,2,3]
+            Y[0]=int(self.entrada1.get());
+            Y[1]=int(self.entrada2.get());
+            Y[2]=int(self.entrada3.get());
+            
+        elif (opcion=="Semestral"):
+            Xs= np.linspace(1, 6,6)
+            Y=[1,2,3,4,5,6]
+            Y[0]=int(self.entrada1.get());
+            Y[1]=int(self.entrada2.get());
+            Y[2]=int(self.entrada3.get());
+            Y[3]=int(self.entrada4.get());
+            Y[4]=int(self.entrada5.get());
+            Y[5]=int(self.entrada6.get());
+        else :
+            Xs= np.linspace(1, 12,12)
+            Y=[1,2,3,4,5,6,7,8,9,10,11,12]
+
+        lAxis.bar(Xs, Y)
         
         canvas = FigureCanvasTkAgg(lPlane, master=tk.Tk())
         canvas.draw()
